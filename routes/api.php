@@ -1,19 +1,16 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\DictionaryController;
+use App\Http\Controllers\WordController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('dictionaries', [DictionaryController::class, 'index']);
+Route::get('dictionaries/{dictionary}', [DictionaryController::class, 'show']);
+Route::post('dictionaries', [DictionaryController::class, 'store']);
+Route::delete('dictionaries/{dictionary}', [DictionaryController::class, 'destroy']);
+
+Route::post('words', [WordController::class, 'store']);
+Route::delete('words/{word}', [WordController::class, 'destroy']);
+Route::patch('set-word/{dictionary}/{word}', [WordController::class, 'setWord']);
+Route::patch('unset-word/{word}', [WordController::class, 'unsetWord']);

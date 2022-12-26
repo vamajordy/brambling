@@ -6,12 +6,22 @@
 
 > docker-compose up -d
 
->composer install
+> php composer.phar install
 >
->docker-compose exec app php artisan key:generate
+> docker-compose exec app php artisan key:generate
 > 
->docker-compose exec app php artisan optimize
+> docker-compose exec app php artisan optimize
 > 
->docker-compose exec app php artisan migrate 
+> docker-compose exec app php artisan migrate 
 
-#### follow 127.0.0.1
+#### to test api use postman, etc:
+
+#### GET        api/dictionaries ................................................................................................................. DictionaryController@index
+#### POST       api/dictionaries ................................................................................................................. DictionaryController@store
+#### GET        api/dictionaries/{dictionary} ..................................................................................................... DictionaryController@show
+#### DELETE     api/dictionaries/{dictionary} .................................................................................................. DictionaryController@destroy
+#### PATCH      api/set-word/{dictionary}/{word} ..................................................................................................... WordController@setWord
+#### PATCH      api/unset-word/{word} .............................................................................................................. WordController@unsetWord
+#### POST       api/words .............................................................................................................................. WordController@store
+#### DELETE     api/words/{word} ..................................................................................................................... WordController@destroy
+
